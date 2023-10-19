@@ -10,21 +10,21 @@ public enum EmployeeType {
     /*
     Формула вычисления зп: если месяц четный, то baseSalary, иначе baseSalary/2
      */
-    Manager{
+    MANAGER{
 
     },
 
     /*
     Формула вычисления зп: всегда baseSalary
      */
-    Programmer{
+    PROGRAMMER{
 
     },
     /*
     Формула вычисления зп: baseSalary * количество дней в месяце в текущем году
     Вычисление количества дней в месяце: YearMonth.of(LocalDate.now().getYear(), month).lengthOfMonth()
      */
-    Tester{
+    TESTER{
 
     };
 

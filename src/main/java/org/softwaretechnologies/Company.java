@@ -17,24 +17,29 @@ public class Company {
 
     /**
      * Создает и добавляет сотрудника в коллекцию employeeList.
-     * @param name имя работника
+     *
+     * @param name       имя работника
      * @param baseSalary базовая зарплата сотрудника
-     * @param type тип работника
+     * @param type       тип работника
      */
     public void addEmployee(String name, int baseSalary, EmployeeType type) {
-        // TODO: реализуйте вышеуказанную функцию
+        employeeList.add(EmployeeFactory.createEmployee(name, baseSalary, type));
 
     }
 
     /**
      * Возвращает сумму зарплат всех сотрудников за указанный месяц
+     *
      * @param month номер месяца
      * @return сумма зарплат всех сотрудников за указанный месяц
      */
     public int getMonthSalary(int month) {
-        // TODO: реализуйте вышеуказанную функцию
+        int sum = 0;
+        for (Employee item : employeeList) {
+            sum += item.getMonthSalary(month);
+        }
 
-        return 0;
+        return sum;
     }
 
     public String getName() {
