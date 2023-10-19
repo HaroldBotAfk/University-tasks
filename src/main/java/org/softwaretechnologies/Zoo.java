@@ -10,16 +10,16 @@ import java.util.List;
 
 public class Zoo {
     private final List<Animal> animalList = new ArrayList<>();
-    public void addAnimal(Animal animal) {
 
-        animalList.add(animal);
+    public void addAnimal(String name, AnimalType animal) {
+        animalList.add(AnimalFactory.createAnimal(name, animal));
     }
 
     /**
-     * Метод должен возвращять список звуков животных.
+     * Метод должен возвращать список звуков животных.
      * Звуки животных должны быть отсортированы по имени житного. Пример
      * Животные:
-     *
+     * <p>
      * Корова: Яша
      * Кошка: Дуся
      * Собака: Жучка
@@ -27,15 +27,24 @@ public class Zoo {
      * Собака: Шарик
      * Кошка: Мурзик
      * Собака: Бобик
-     *
+     * <p>
      * Вовращаемый список звуков: moo, woof, meow, woof, meow, woof, moo
      *
      * @return Звуки животных, в алфавитном порядке имени животного.
      */
     public List<String> soundAllAnimalsSortByName() {
         List<String> sounds = new ArrayList<>();
-        // TODO заполните корректно список звуков
+        Comparator<Animal> comparator = new Comparator<Animal>() {
+            @Override
+            public int compare(Animal animal1, Animal animal2) {
+                return animal1.getName().compareTo(animal2.getName());
+            }
+        };
 
+        animalList.sort(comparator);
+        for (Animal item : animalList) {
+            sounds.add(item.sound());
+        }
         return sounds;
     }
 
